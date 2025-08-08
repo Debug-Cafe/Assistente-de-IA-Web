@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente de I.A</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Assistente Virtual</h1>    
+    </header>
+    <main>
+        <section class="principal"> 
+            <form id="question-form">      
+               <div class="caixa-pergunta">
+                  <label for="pergunta">Escreva sua pergunta</label><br>
+                  <textarea name="pergunta" id="pergunta" placeholder="digite sua pergunta..." maxlength="2000"></textarea>
+                  <div id="char-count">0/2000</div>
+                  <button type="submit" id="submit-btn">Enviar</button>
+               </div>
+            </form>
+        </section>
+        <section class="resposta" id="response-section" style="display: none;"> 
+            <div id="response-area"></div>
+            <div class="actions">
+                <button id="copy-btn">Copiar</button>
+                <button id="clear-btn">Limpar</button>
+            </div>
+        </section>
+        <footer>
+            <p>desenvolvido por Debug Café</p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
