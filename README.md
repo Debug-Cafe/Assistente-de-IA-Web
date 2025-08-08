@@ -94,4 +94,66 @@ Serão 4 requisitos principais para esse projeto:
 4. Usuário digita sua pergunta no textarea  
 5. Usuário clica em "Perguntar" ou usa Ctrl+Enter  
 6. Aplicação exibe a resposta da IA  
-7. Usuário pode copiar a resposta ou limpar para nova pergunta  
+7. Usuário pode copiar a resposta ou limpar para nova pergunta
+
+# Desenvolvimento
+
+Esta seção documenta as contribuições e implementações realizadas durante o desenvolvimento do projeto.
+
+## Backend (server.js)
+
+- Implementado servidor em **Node.js** com **Express**.
+- Configuração para servir os arquivos estáticos da pasta `public/`.
+- Definição de rota **GET /** para envio do `index.html` com **Content Security Policy** restritiva (`default-src 'self'`).
+- Criação do endpoint **POST /ask**:
+  - Recebe a pergunta enviada pelo front-end (`question`).
+  - Encaminha a requisição para a API Gemini usando variáveis de ambiente (`GEMINI_API_KEY`, `GEMINI_API_URL`).
+  - Retorna a resposta da IA para o cliente.
+- Uso do **dotenv** para gerenciamento seguro das variáveis de ambiente.
+- Estrutura preparada para deploy na **Vercel** com `vercel.json`.
+
+## Outras contribuições
+
+- Reorganização da estrutura do projeto para manter o front-end em `public/`.
+- Ajuste no README para refletir a nova arquitetura.
+- Configuração de scripts no `package.json` para execução local e em produção.
+- Implementação de boas práticas de segurança e privacidade, evitando exposição de chaves no front-end.
+
+## Como testar o servidor localmente
+
+1. **Instalar dependências**  
+   ```bash
+   npm install
+   ```
+
+2. **Configurar variáveis de ambiente**  
+   Criar um arquivo `.env` na raiz com:
+   ```ini
+   PORT= a que você quiser
+   GEMINI_API_KEY=sua_chave_aqui
+   GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+   ```
+
+3. **Rodar o servidor**  
+   ```bash
+   npm start
+   ```
+   O servidor estará disponível em `http://localhost:a que voce quiser`.
+
+4. **Testar o endpoint `/ask` via terminal**  
+
+   **No Windows PowerShell:**
+   ```powershell
+   curl.exe -X POST http://localhost:a que você quiser/ask `
+     -H "Content-Type: application/json" `
+     -d "{\"question\": \"Qual é a capital do Brasil?\"}"
+   ```
+
+   **No Linux/Mac (bash/zsh):**
+   ```bash
+   curl -X POST http://localhost:a que voce quiser/ask      -H "Content-Type: application/json"      -d '{"question": "Qual é a capital do Brasil?"}'
+   ```
+
+5. **Testar pelo navegador**  
+   - Acesse `http://localhost:a que voce quiser` para abrir a interface web.
+   - Faça uma pergunta e verifique a resposta retornada pela IA.
