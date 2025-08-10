@@ -36,7 +36,6 @@ main {
 
 .container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: stretch;
   border-radius: 10px;
@@ -74,15 +73,9 @@ main {
 
 .logoTipo,
 img {
-  width: 60px;
+  width: 40px;
   height: auto;
   margin-top: 5px;
-}
-
-.LogoText {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
 }
 
 .title {
@@ -132,7 +125,7 @@ section.pergunta div.caixa-pergunta input {
 }
 
 section.pergunta div.caixa-pergunta button {
-  padding: 8px 7px;
+  padding: 8px 9px;
   border: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0.15);
@@ -177,14 +170,8 @@ section.pergunta div.caixa-pergunta button {
   }
 
   .logoTipo img {
-    width: 70px;
+    width: 50px;
   }
-
-  .LogoText {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-}
 }
 
 @media (min-width: 1024px) {
@@ -201,18 +188,4 @@ section.pergunta div.caixa-pergunta button {
   .caixa-resposta p {
     font-size: 1.2rem;
   }
-
-  .logoTipo img {
-    width: 80px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .LogoText {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-}
-
 }
