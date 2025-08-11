@@ -1,30 +1,35 @@
+require("dotenv").config({ path: require("path").resolve(__dirname, "..", "..", ".ENV") });
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_API_URL = process.env.GEMINI_API_URL;
+
+console.log("GEMINI_API_KEY no chatController:", GEMINI_API_KEY);
+console.log("GEMINI_API_URL no chatController:", GEMINI_API_URL);
 
 async function handleChat(req, res) {
-  const { question, apiKey, model } = req.body;
+  const { question } = req.body;
 
   if (!question) {
     return res.status(400).json({ error: 'Pergunta é obrigatória.' });
   }
-  if (!apiKey) {
-    return res.status(400).json({ error: 'API Key é obrigatória.' });
-  }
-  if (!model) {
-    return res.status(400).json({ error: 'Modelo é obrigatório.' });
-  }
 
   try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateText`;
+    // Verifique se as variáveis de ambiente estão configuradas
+    if (!GEMINI_API_KEY || !GEMINI_API_URL) {
+        console.error('Erro: GEMINI_API_KEY ou GEMINI_API_URL não estão definidas. Verifique seu arquivo .env.');
+        return res.status(500).json({ error: 'Configuração do servidor incompleta.' });
+    }
 
-    const response = await fetch(url, {
+    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: {
-          text: question,
-        },
+        contents: [{
+          parts: [{
+            text: question,
+          }],
+        }],
       }),
     });
 
@@ -35,7 +40,7 @@ async function handleChat(req, res) {
     }
 
     const data = await response.json();
-    const answer = data.candidates?.[0]?.output || 'Sem resposta';
+    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sem resposta';
 
     res.json({ answer });
 
@@ -46,4 +51,3 @@ async function handleChat(req, res) {
 }
 
 module.exports = { handleChat };
-
