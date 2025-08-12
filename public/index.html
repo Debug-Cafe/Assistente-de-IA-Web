@@ -20,65 +20,37 @@
       </header>
 
       <main>
-        <div class="layout">
-          <!-- Seção para API Key e modelo -->
-          <section class="configuracoes" style="margin-bottom: 1rem">
-            <input
-              type="text"
-              id="apiKeyInput"
-              placeholder="Digite sua API Key"
-              style="width: 60%; padding: 0.5rem"
-            />
-            <select id="modelSelect" style="padding: 0.5rem">
-              <option value="gemini-2.5-flash">gemini-2.5-flash</option>
-              <option value="gemini-2.5">gemini-2.5</option>
-              <option value="text-bison-001">text-bison-001</option>
-              <!-- Adicione mais modelos se quiser -->
-            </select>
-          </section>
+  <section class="resposta">
+    <div class="caixa-resposta">
+      <h1>Apresentamos o Debug Café IA</h1>
+      <p>
+        Ele conta com nosso modelo mais inteligente, rápido e útil até hoje,
+        com raciocínio integrado para você receber sempre a melhor resposta.
+      </p>
+    </div>
+  </section>
 
-          <section class="resposta">
-            <div class="caixa-resposta">
-              <!-- Conteúdo inicial que será substituído pela resposta -->
-              <h1>Apresentamos o Debug Café IA</h1>
-              <p>
-                Ele conta com nosso modelo mais inteligente, rápido e útil até
-                hoje, com raciocínio integrado para você receber sempre a melhor
-                resposta.
-              </p>
-            </div>
-          </section>
-
-          <section class="pergunta">
-            <div
-              class="caixa-pergunta"
-              style="
-                position: relative;
-                width: 100%;
-                display: flex;
-                align-items: center;
-              "
-            >
-              <input
-                id="inputPergunta"
-                type="text"
-                placeholder="Pergunte alguma coisa"
-                maxlength="300"
-              />
-              <span id="charCount">0/300</span>
-              <button type="button" id="submit-btn">Enviar</button>
-              <button type="button" id="limpar-btn" style="margin-left: 0.5rem">
-                Limpar
-              </button>
-              <button type="button" id="copiar-btn" style="margin-left: 0.5rem">
-                Copiar
-              </button>
-            </div>
-          </section>
+  <section class="pergunta">
+    <div class="caixa-pergunta">
+      <div class="input-wrapper">
+        <input
+          id="inputPergunta"
+          type="text"
+          placeholder="Pergunte alguma coisa"
+          maxlength="300"
+        />
+        <span id="charCount">0/300</span>
+        <div class="buttons">
+          <button type="button" id="submit-btn">Enviar</button>
+          <button type="button" id="limpar-btn">Limpar</button>
+          <button type="button" id="copiar-btn">Copiar</button>
         </div>
-      </main>
+      </div>
+    </div>
+  </section>
+</main>
     </section>
 
     <script src="/script.js"></script>
   </body>
-</html>
+</html

@@ -55,7 +55,6 @@ main {
   flex-direction: column;
   gap: 10px;
   flex-grow: 1;
-  height: auto;
 }
 
 .apresentacao {
@@ -98,46 +97,6 @@ img {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid transparent;
-  box-sizing: border-box;
-}
-
-section.pergunta div.caixa-pergunta {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-section.pergunta div.caixa-pergunta input {
-  flex: 1;
-  padding: 8px 10px;
-  border: none;
-  outline: none;
-  background: transparent;
-  border-radius: 10px 0 0 10px;
-  color: #070101;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-}
-
-section.pergunta div.caixa-pergunta button {
-  padding: 8px 9px;
-  border: none;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.15);
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0 10px 10px 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  color: #050202;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box;
 }
 
 .caixa-resposta {
@@ -155,55 +114,53 @@ section.pergunta div.caixa-pergunta button {
   border-radius: 10px;
 }
 
-/* Container da seção de configurações (API Key + modelo) */
-.configuracoes {
+section.pergunta .caixa-pergunta {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  justify-content: space-between; /* garante input à esquerda e botões à direita */
+  gap: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
-/* Input da API Key no estilo do input da pergunta */
-#apiKeyInput {
+.input-wrapper {
+  position: relative;
   flex: 1;
-  padding: 8px 10px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 8px 50px 8px 10px; /* espaço pro contador à direita dentro do input */
   border: none;
   outline: none;
   background: transparent;
   border-radius: 10px;
   color: #070101;
   font-size: 0.9rem;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: border-color 0.3s ease;
 }
 
-#apiKeyInput:focus {
-  border-color: rgba(255, 255, 255, 0.6);
+#charCount {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #666;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* Dropdown do modelo */
-#modelSelect {
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: transparent;
-  color: #070101;
-  font-size: 0.9rem;
-  cursor: pointer;
-  box-sizing: border-box;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: border-color 0.3s ease;
+.botoes {
+  display: flex;
+  gap: 0.5rem;
 }
 
-#modelSelect:focus {
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-/* Botões Limpar e Copiar no estilo dos botões da pergunta */
+#submit-btn,
 #limpar-btn,
 #copiar-btn {
   padding: 8px 12px;
@@ -217,69 +174,13 @@ section.pergunta div.caixa-pergunta button {
   white-space: nowrap;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
-  box-sizing: border-box;
 }
 
+#submit-btn:hover,
 #limpar-btn:hover,
 #copiar-btn:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-
-/* Espaçamento entre botões dentro da caixa-pergunta */
-
-.caixa-pergunta button:not(:first-child) {
-  margin-left: 0.5rem;
-}
-.caixa-pergunta {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-#inputPergunta {
-  flex: 1;
-  padding: 8px 40px 8px 10px; /* espaço pra o contador */
-  border: none;
-  outline: none;
-  background: transparent;
-  border-radius: 10px 0 0 10px;
-  color: #070101;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-}
-
-#charCount {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  color: #666;
-  pointer-events: none;
-  user-select: none;
-}
-
-.caixa-pergunta button {
-  padding: 8px 9px;
-  border: none;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.15);
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0 10px 10px 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  color: #050202;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.caixa-pergunta button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 
 @media (min-width: 768px) {
   .container {
