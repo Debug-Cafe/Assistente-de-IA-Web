@@ -1,4 +1,4 @@
-require("dotenv").config({ path: require("path").resolve(__dirname, "..", ".ENV") });
+require("dotenv").config({ path: require("path").resolve(__dirname, "..", "..", ".env") });
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = process.env.GEMINI_API_URL;
 
@@ -13,7 +13,6 @@ async function handleChat(req, res) {
   }
 
   try {
-    // Verifique se as variáveis de ambiente estão configuradas
     if (!GEMINI_API_KEY || !GEMINI_API_URL) {
         console.error('Erro: GEMINI_API_KEY ou GEMINI_API_URL não estão definidas. Verifique seu arquivo .env.');
         return res.status(500).json({ error: 'Configuração do servidor incompleta.' });
@@ -36,7 +35,7 @@ async function handleChat(req, res) {
     if (!response.ok) {
       const errorBody = await response.text();
       console.error('Resposta de erro da API Gemini:', response.status, errorBody);
-      return res.status(response.status).json({ error: `Erro ao obter resposta do Gemini. Status: ${response.status}` });
+      return res.status(response.status).json({ error: `⚠️ Erro ao obter resposta do Gemini. Status: ${response.status}` });
     }
 
     const data = await response.json();
@@ -46,7 +45,7 @@ async function handleChat(req, res) {
 
   } catch (error) {
     console.error('Erro:', error);
-    res.status(500).json({ error: 'Erro interno no servidor' });
+    res.status(500).json({ error: '❌ Ocorreu um erro no servidor!!' });
   }
 }
 
