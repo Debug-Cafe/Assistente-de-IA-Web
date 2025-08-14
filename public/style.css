@@ -55,6 +55,7 @@ main {
   flex-direction: column;
   gap: 10px;
   flex-grow: 1;
+  height: auto;
 }
 
 .apresentacao {
@@ -97,28 +98,13 @@ img {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid transparent;
+  box-sizing: border-box;
 }
 
-.caixa-resposta {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  border-radius: 10px;
-  min-height: 100px;
-  width: 100%;
-}
-
-.texto-pergunta {
-  min-height: 100px;
-  border-radius: 10px;
-}
-
-section.pergunta .caixa-pergunta {
+section.pergunta div.caixa-pergunta {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between; /* garante input à esquerda e botões à direita */
+  flex-direction: column;
   gap: 10px;
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
@@ -126,16 +112,18 @@ section.pergunta .caixa-pergunta {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 10px;
+  min-height: 100px;
+  padding: 10px;
 }
 
-.input-wrapper {
+.input-and-count {
   position: relative;
-  flex: 1;
+  width: 100%;
 }
 
 .input-wrapper input {
   width: 100%;
-  padding: 8px 50px 8px 10px; /* espaço pro contador à direita dentro do input */
+  padding: 8px 10px;
   border: none;
   outline: none;
   background: transparent;
@@ -147,9 +135,8 @@ section.pergunta .caixa-pergunta {
 #charCount {
   position: absolute;
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
+  bottom: 5px;
+  font-size: 0.7rem;
   color: #666;
   pointer-events: none;
   user-select: none;

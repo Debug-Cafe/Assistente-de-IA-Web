@@ -11,7 +11,7 @@
       <header>
         <div class="apresentacao">
           <div class="logoTipo">
-            <img src="/assets/icons/logo.svg" alt="ícone do site" />
+            <img src="/assets/icons/logo.png" alt="ícone do site" />
           </div>
           <div class="Title">
             <span class="LogoText">Debug Café IA</span>
@@ -20,37 +20,40 @@
       </header>
 
       <main>
-  <section class="resposta">
-    <div class="caixa-resposta">
-      <h1>Apresentamos o Debug Café IA</h1>
-      <p>
-        Ele conta com nosso modelo mais inteligente, rápido e útil até hoje,
-        com raciocínio integrado para você receber sempre a melhor resposta.
-      </p>
-    </div>
-  </section>
+        <form class="layout">
+          <section class="resposta">
+            <div class="caixa-resposta">
+              <h1>Apresentamos o Debug Café IA</h1>
+              <p>
+                Ele conta com nosso modelo mais inteligente, rápido e útil até
+                hoje, com raciocínio integrado para você receber sempre a melhor
+                resposta.
+              </p>
+            </div>
+          </section>
 
-  <section class="pergunta">
-    <div class="caixa-pergunta">
-      <div class="input-wrapper">
-        <input
-          id="inputPergunta"
-          type="text"
-          placeholder="Pergunte alguma coisa"
-          maxlength="300"
-        />
-        <span id="charCount">0/300</span>
-        <div class="buttons">
-          <button type="button" id="submit-btn">Enviar</button>
-          <button type="button" id="limpar-btn">Limpar</button>
-          <button type="button" id="copiar-btn">Copiar</button>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+          <section class="pergunta">
+            <div class="caixa-pergunta">
+              <div class="input-wrapper">
+                <input
+                  id="inputPergunta"
+                  type="text"
+                  placeholder="Pergunte alguma coisa"
+                  maxlength="300"
+                />
+                <span id="charCount">0/300</span>
+                <div class="buttons">
+                  <button type="button" id="submit-btn">Enviar</button>
+                  <button type="button" id="limpar-btn">Limpar</button>
+                  <button type="button" id="copiar-btn">Copiar</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </form>
+      </main>
     </section>
 
     <script src="/script.js"></script>
   </body>
-</html
+</html>
