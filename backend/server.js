@@ -1,29 +1,65 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
-const cors = require("cors"); 
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const winston = require("winston");
+const chatRoutes = require("./routes/chatRoutes");
+
 const app = express();
-const chatRoutes = require("./routes/chatRoutes"); // Caminho para a estrutura do usuário
 
-// Middleware para permitir requisições de outras origens
-app.use(cors());
+// Logger
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'app.log' })
+  ]
+});
 
-// Middleware para analisar o corpo das requisições JSON
-app.use(express.json());
+// Security middleware
+app.use(helmet());
 
-// Arquivos estáticos
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Muitas requisições, tente novamente em 15 minutos.'
+});
+app.use(limiter);
+
+// CORS específico
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://yourdomain.com'] 
+    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  credentials: true
+};
+app.use(cors(corsOptions));
+
+// Body parser
+app.use(express.json({ limit: '10mb' }));
+
+// Static files
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-// Rota principal com variaveis injetadas
+// Main route
 app.get("/", (req, res) => {
-    res.set("Content-Security-Policy", "default-src 'self'");
+    res.set("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
     res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
-// Usa as rotas do chat
+// API routes
 app.use("/api", chatRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Oba! 🚀 Servidor rodando na porta ${PORT}`);
+    logger.info(`Servidor rodando na porta ${PORT}`);
 });
+
+module.exports = { app, logger };

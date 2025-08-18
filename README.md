@@ -1,171 +1,336 @@
-# Projeto Assistente de IA Web
+# Debug Café IA - Assistente de IA Web
 
 ## Objetivos Gerais
 
-- Criar uma aplicação web interativa do zero  
-- Integrar com APIs externas (OpenAI/Gemini)  
-- Implementar validação de formulários  
-- Gerenciar estados de loading e erro  
-- Usar APIs do navegador (localStorage, clipboard)  
-- Criar interfaces responsivas e acessíveis  
-- Aplicar boas práticas de UX/UI  
+- Criar uma aplicação web interativa moderna tipo chat
+- Integrar com API do Google Gemini
+- Implementar interface conversacional intuitiva
+- Gerenciar estados de loading e erro com UX profissional
+- Usar APIs do navegador (clipboard, notifications)
+- Criar interfaces responsivas e acessíveis
+- Aplicar boas práticas de segurança e UX/UI
 
 ---
 
 ## Estrutura do Projeto
 
-assistente-ia/
-├── index.html
-├── style.css
-└── script.js
+```
+debug-cafe-ia/
+├── backend/
+│   ├── server.js
+│   ├── controllers/
+│   │   └── chatController.js
+│   ├── routes/
+│   │   └── chatRoutes.js
+│   └── package.json
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── assets/
+│       ├── icons/
+│       └── img/
+├── .env
+├── .gitignore
+├── package.json
+├── vercel.json
+├── install.bat
+├── start.bat
+└── README.md
+```
 
-## Funcionalidades do Projeto
+## Funcionalidades Implementadas
 
-### Requisitos Básicos
+### ✨ Interface Moderna
+- **Design tipo chat** - Interface conversacional similar ao ChatGPT
+- **Tipografia Inter** - Fonte moderna e legível
+- **Esquema de cores "Debug Café"** - Tons de café profissionais
+- **Animações suaves** - Transições e micro-interações
+- **Header/Footer fixos** - Layout profissional full-width
 
-Serão 4 requisitos principais para esse projeto:
+### 💬 Experiência de Chat
+- **Mensagens em bolhas** - Visual familiar de aplicativos de chat
+- **Avatares** - Usuário (👤) e IA (🤖)
+- **Histórico visual** - Conversa completa mantida na tela
+- **Loading animado** - Indicador "Pensando..." com dots animados
+- **Textarea expansível** - Cresce automaticamente com o texto
 
-#### 01 - Estrutura HTML Básica
-- Cabeçalho com título da aplicação  
-- Input para inserir a chave de API da OpenAI  
-- Área principal com input para pergunta e botão de envio  
-- Seção para exibir a resposta da IA  
+### ⚡ Funcionalidades Avançadas
+- **Sistema de notificações** - Toasts modernos no canto superior
+- **Copiar mensagens** - Botão em cada resposta da IA
+- **Atalhos de teclado** - Ctrl+Enter para enviar
+- **Contador de caracteres** - Limite de 2000 caracteres com indicador visual
+- **Validação robusta** - Entrada e tipos validados
+- **Estados visuais** - Loading, success, error, warning
+- **Formatação de texto** - Negrito, itálico e parágrafos automáticos
+- **Markdown Rendering** - Respostas formatadas com suporte completo
 
-#### 02 - Interface de Entrada
-- Input de texto para a pergunta do usuário  
-- Botão "Perguntar" para enviar a pergunta  
-- Input para API Key (tipo password)  
+### 🔒 Segurança Implementada
+- **Helmet** - Headers de segurança
+- **Rate Limiting** - Proteção contra spam (100 req/15min)
+- **CORS específico** - Apenas origins autorizados
+- **Validação de entrada** - Sanitização e validação de inputs
+- **Proteção CSRF** - Headers obrigatórios
+- **Winston Logger** - Logs estruturados e seguros
 
-#### 03 - Exibição da Resposta
-- Área dedicada para mostrar a resposta da IA  
-- Texto deve ser legível e bem formatado  
-- Área deve ficar oculta até haver uma resposta  
+### 📱 Responsividade Total
+- **Mobile-first** - Otimizado para dispositivos móveis
+- **Breakpoints inteligentes** - Adapta em qualquer tamanho de tela
+- **Touch-friendly** - Botões e áreas de toque adequadas
+- **Layout flexível** - Funciona em desktop, tablet e mobile
 
-#### 04 - Integração com API da IA
-- Fazer requisição POST para endpoint da OpenAI  
-- Enviar pergunta e API Key corretamente  
-- Processar resposta e exibir para o usuário  
-- Usar `fetch()` e `async/await`  
-
----
-
-### Requisitos Extras (Opcionais)
-
-#### Estados e Validação
-- Estados de loading/carregamento enquanto aguarda resposta  
-- Botão desabilitado durante carregamento  
-- Validação de formulários (API Key e pergunta não vazias)  
-- Tratamento e exibição de erros de conexão  
-- Mensagens de erro amigáveis  
-
-#### Funcionalidades de Interação
-- Botão para limpar resposta da tela  
-- Copiar resposta da IA para área de transferência  
-- Salvar API Key no localStorage  
-- Atalhos de teclado (Ctrl+Enter para enviar)  
-
-#### Melhorias na Interface
-- Mostrar a pergunta junto com a resposta  
-- Ícones nos botões  
-- Animações suaves e feedback visual  
-- Contador de caracteres  
-- Scroll automático para resposta  
-- Dropdown para seleção de diferentes modelos de IA  
-
-#### Configurações Avançadas
-- Histórico de conversas anteriores  
-- Temas (dark mode / light mode)  
+### ♿ Acessibilidade
+- **ARIA labels** - Compatível com screen readers
+- **Focus management** - Navegação por teclado completa
+- **Contraste adequado** - Cores acessíveis
+- **Reduced motion** - Respeita preferências do usuário
 
 ---
 
 ## Configuração e Uso
 
 ### Pré-requisitos
-- Navegador moderno (Chrome, Firefox, Safari, Edge)  
-- Chave de API da OpenAI  
-- Editor de código (VS Code recomendado)  
-- Conhecimentos básicos em HTML, CSS e JavaScript  
+- **Node.js** (versão 16 ou superior)
+- **Navegador moderno** (Chrome, Firefox, Safari, Edge)
+- **Chave de API do Google Gemini**
+- **Editor de código** (VS Code recomendado)
 
-### Fluxo da Aplicação
+### Instalação Rápida
 
-1. Usuário obtém uma API Key da OpenAI  
-2. Usuário abre a aplicação no navegador  
-3. Usuário insere sua API Key no campo apropriado  
-4. Usuário digita sua pergunta no textarea  
-5. Usuário clica em "Perguntar" ou usa Ctrl+Enter  
-6. Aplicação exibe a resposta da IA  
-7. Usuário pode copiar a resposta ou limpar para nova pergunta
+#### Opção 1: Scripts Automáticos (Windows)
+```bash
+# Instalar tudo automaticamente
+install.bat
 
-# Desenvolvimento
+# Iniciar servidor
+start.bat
+```
 
-Esta seção documenta as contribuições e implementações realizadas durante o desenvolvimento do projeto.
+#### Opção 2: Manual
+```bash
+# Instalar dependências
+cd backend
+npm install
 
-## Backend (server.js)
+# Configurar .env (veja seção abaixo)
+# Iniciar servidor
+npm start
+```
 
-- Implementado servidor em **Node.js** com **Express**.
-- Configuração para servir os arquivos estáticos da pasta `public/`.
-- Definição de rota **GET /** para envio do `index.html` com **Content Security Policy** restritiva (`default-src 'self'`).
-- Criação do endpoint **POST /ask**:
-  - Recebe a pergunta enviada pelo front-end (`question`).
-  - Encaminha a requisição para a API Gemini usando variáveis de ambiente (`GEMINI_API_KEY`, `GEMINI_API_URL`).
-  - Retorna a resposta da IA para o cliente.
-- Uso do **dotenv** para gerenciamento seguro das variáveis de ambiente.
-- Estrutura preparada para deploy na **Vercel** com `vercel.json`.
+#### Opção 3: Usando package.json da raiz
+```bash
+# Instalar dependências
+npm run setup
 
-## Frontend (public/)
-- `public/index.html`: A estrutura HTML foi criada e atualizada para definir a base da página, incluindo cabeçalho, área de resposta da IA, campo de entrada de pergunta e botões de ação. A organização dos elementos foi otimizada para usabilidade e responsividade, com a separação do contador de caracteres dos botões de ação.
-- `public/style.css`: Os estilos CSS foram desenvolvidos e ajustados para estilizar a aplicação, garantindo um design moderno e funcional. Isso inclui estilos para o layout geral, componentes da interface (como caixas de pergunta e resposta), e ajustes para diferentes tamanhos de tela. O posicionamento do contador de caracteres (#charCount) foi refinado para o canto inferior direito do campo de pergunta, evitando colisões.
-- `public/script.js`: A lógica JavaScript foi implementada para gerenciar a interatividade do frontend. Isso abrange o envio de perguntas ao backend, a exibição das respostas da IA, a manipulação dos estados de carregamento e erro, e funcionalidades como limpar e copiar a resposta. O script também lida com o contador de caracteres e atalhos de teclado.
+# Iniciar servidor
+npm start
+```
 
-## Outras contribuições
+### Configuração da API Gemini
 
-- Reorganização da estrutura do projeto para manter o front-end em `public/`.
-- Ajuste no README para refletir a nova arquitetura.
-- Configuração de scripts no `package.json` para execução local e em produção.
-- Implementação de boas práticas de segurança e privacidade, evitando exposição de chaves no front-end.
-
-## Como testar o servidor localmente
-
-1. **Instalar dependências**  
-   ```bash
-   npm install
-   ```
-
-2. **Obter chave da API Gemini**  
+1. **Obter chave da API Gemini**
    - Acesse https://aistudio.google.com/
    - Faça login com sua conta Google
    - Clique em "Get API Key" ou "Criar chave de API"
    - Copie a chave gerada
 
-3. **Configurar variáveis de ambiente**  
-   Criar um arquivo `.env` na raiz com:
+2. **Configurar variáveis de ambiente**
+   Criar arquivo `.env` na raiz:
    ```ini
-   PORT= a que você quiser
+   PORT=3000
    GEMINI_API_KEY=sua_chave_aqui
    GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
    ```
 
-4. **Rodar o servidor**  
+### Fluxo da Aplicação
+
+1. Usuário acessa `http://localhost:3000`
+2. Interface de chat carrega com mensagem de boas-vindas
+3. Usuário digita pergunta no campo de texto
+4. Clica "Enviar" ou usa Ctrl+Enter
+5. IA processa e responde em tempo real
+6. Usuário pode copiar respostas ou limpar conversa
+7. Histórico mantido durante a sessão
+
+---
+
+# Desenvolvimento
+
+## Arquitetura
+
+### Backend (Node.js + Express)
+- **server.js** - Servidor principal com middlewares de segurança
+- **chatController.js** - Lógica de integração com API Gemini
+- **chatRoutes.js** - Rotas da API com validação
+- **Middlewares**: Helmet, Rate Limiting, CORS, Winston Logger
+
+### Frontend (Vanilla JS + CSS)
+- **index.html** - Estrutura semântica moderna com acessibilidade
+- **style.css** - Design system com variáveis CSS e responsividade
+- **script.js** - Lógica de chat com validação e UX avançada
+
+### Segurança Implementada
+- Headers de segurança (Helmet)
+- Rate limiting (100 req/15min)
+- CORS restritivo
+- Validação de entrada
+- Sanitização de logs
+- Proteção CSRF via headers
+
+### Melhorias de Qualidade
+- Logs estruturados (Winston)
+- Validação DOM robusta
+- Error handling completo
+- Notificações visuais
+- Estados de loading
+- Tipografia profissional
+
+## Dependências
+
+### Backend
+```json
+{
+  "cors": "^2.8.5",
+  "dotenv": "^16.3.1", 
+  "express": "^4.19.2",
+  "express-rate-limit": "^7.1.5",
+  "helmet": "^7.1.0",
+  "validator": "^13.11.0",
+  "winston": "^3.11.0"
+}
+```
+
+### Frontend
+- **Vanilla JavaScript** - Sem frameworks para performance
+- **CSS Variables** - Sistema de design consistente
+- **Inter Font** - Tipografia moderna do Google Fonts
+- **Formatação de texto** - Sistema próprio para negrito, itálico e parágrafos
+- **Marked.js** - Biblioteca para renderização de Markdown
+
+## Scripts Disponíveis
+
+### Raiz do projeto
+- `npm run setup` - Instala dependências do backend
+- `npm start` - Inicia o servidor
+- `npm run dev` - Modo desenvolvimento com nodemon
+
+### Backend
+- `npm start` - Inicia servidor em produção
+- `npm run dev` - Modo desenvolvimento com auto-reload
+
+## Testes
+
+### Teste via Terminal
+```bash
+# Windows PowerShell
+curl.exe -X POST http://localhost:3000/api/ask `
+  -H "Content-Type: application/json" `
+  -H "X-Requested-With: XMLHttpRequest" `
+  -d "{\"question\": \"Olá, como você está?\"}"
+
+# Linux/Mac
+curl -X POST http://localhost:3000/api/ask \
+  -H "Content-Type: application/json" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -d '{"question": "Olá, como você está?"}'
+```
+
+### Teste via Navegador
+1. Acesse `http://localhost:3000`
+2. Digite uma pergunta
+3. Verifique a resposta da IA
+4. Teste funcionalidades (copiar, limpar, etc.)
+
+---
+
+## Deploy no Vercel
+
+### 🚀 Deploy Rápido
+
+```bash
+# 1. Instalar Vercel CLI
+npm i -g vercel
+
+# 2. Fazer deploy
+vercel
+
+# 3. Configurar variáveis no dashboard Vercel
+```
+
+### 📋 Passo a Passo
+
+1. **Preparar código**
    ```bash
-   npm start
-   ```
-   O servidor estará disponível em `http://localhost:a que voce quiser`.
-
-5. **Testar o endpoint `/ask` via terminal**  
-
-
-   **No Windows PowerShell:**
-   ```powershell
-   curl.exe -X POST http://localhost:a que você quiser/api/ask `
-     -H "Content-Type: application/json" `
-     -d "{\"question\": \"Qual é a capital do Brasil?\"}"
+   git add .
+   git commit -m "feat: deploy ready"
+   git push origin main
    ```
 
-   **No Linux/Mac (bash/zsh):**
+2. **Deploy**
    ```bash
-   curl -X POST http://localhost:a que voce quiser/api/ask      -H "Content-Type: application/json"      -d '{"question": "Qual é a capital do Brasil?"}'
+   vercel
+   ```
+   - Conecte com GitHub
+   - Confirme configurações
+   - Deploy automático
+
+3. **Configurar variáveis**
+   - Acesse dashboard Vercel
+   - Vá em Settings > Environment Variables
+   - Adicione:
+     - `GEMINI_API_KEY` = sua_chave_real
+     - `NODE_ENV` = production
+
+4. **Redeploy**
+   ```bash
+   vercel --prod
    ```
 
-6. **Testar pelo navegador**  
-   - Acesse `http://localhost:a que voce quiser` para abrir a interface web.
-   - Faça uma pergunta e verifique a resposta retornada pela IA.
+### ⚙️ Configuração Automática
+
+O arquivo `vercel.json` já está configurado:
+- Build: Node.js
+- Rotas: API + Static files
+- Ambiente: Production
+
+### 🌐 Variáveis Necessárias
+```ini
+GEMINI_API_KEY=sua_chave_real
+NODE_ENV=production
+```
+
+---
+
+## Contribuição
+
+### Padrões de Código
+- **ESLint** - Linting JavaScript
+- **Prettier** - Formatação de código
+- **Semantic commits** - Mensagens de commit padronizadas
+- **CSS BEM** - Metodologia para classes CSS
+
+### Estrutura de Commits
+```
+feat: adiciona nova funcionalidade
+fix: corrige bug
+docs: atualiza documentação
+style: ajustes de estilo/formatação
+refactor: refatoração de código
+test: adiciona/modifica testes
+```
+
+---
+
+## Licença
+
+© 2025 Debug Café - Assistente de IA
+
+---
+
+## Suporte
+
+Para dúvidas ou problemas:
+1. Verifique se todas as dependências estão instaladas
+2. Confirme se a chave da API Gemini está correta
+3. Verifique os logs do servidor para erros
+4. Teste a conectividade com a API Gemini
