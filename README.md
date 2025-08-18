@@ -112,6 +112,11 @@ Esta seção documenta as contribuições e implementações realizadas durante 
 - Uso do **dotenv** para gerenciamento seguro das variáveis de ambiente.
 - Estrutura preparada para deploy na **Vercel** com `vercel.json`.
 
+## Frontend (public/)
+- `public/index.html`: A estrutura HTML foi criada e atualizada para definir a base da página, incluindo cabeçalho, área de resposta da IA, campo de entrada de pergunta e botões de ação. A organização dos elementos foi otimizada para usabilidade e responsividade, com a separação do contador de caracteres dos botões de ação.
+- `public/style.css`: Os estilos CSS foram desenvolvidos e ajustados para estilizar a aplicação, garantindo um design moderno e funcional. Isso inclui estilos para o layout geral, componentes da interface (como caixas de pergunta e resposta), e ajustes para diferentes tamanhos de tela. O posicionamento do contador de caracteres (#charCount) foi refinado para o canto inferior direito do campo de pergunta, evitando colisões.
+- `public/script.js`: A lógica JavaScript foi implementada para gerenciar a interatividade do frontend. Isso abrange o envio de perguntas ao backend, a exibição das respostas da IA, a manipulação dos estados de carregamento e erro, e funcionalidades como limpar e copiar a resposta. O script também lida com o contador de caracteres e atalhos de teclado.
+
 ## Outras contribuições
 
 - Reorganização da estrutura do projeto para manter o front-end em `public/`.
@@ -140,11 +145,12 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    ```
    O servidor estará disponível em `http://localhost:a que voce quiser`.
 
-4. **Testar o endpoint `/ask` via terminal**  
+4. 
+
 
    **No Windows PowerShell:**
    ```powershell
-   curl.exe -X POST http://localhost:a que você quiser/ask `
+   curl.exe -X POST http://localhost:a que você quiser/api/ask `
      -H "Content-Type: application/json" `
      -d "{\"question\": \"Qual é a capital do Brasil?\"}"
    ```
