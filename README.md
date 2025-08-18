@@ -1,5 +1,9 @@
 # Debug Café IA - Assistente de IA Web
 
+🚀 **[Acesse a aplicação online](https://debugcafe-ia.vercel.app/)**
+
+🚀 **[Acesse a aplicação online](https://debugcafe-ia.vercel.app/)**
+
 ## Objetivos Gerais
 
 - Criar uma aplicação web interativa moderna tipo chat
@@ -38,6 +42,10 @@ debug-cafe-ia/
 ├── start.bat
 └── README.md
 ```
+
+🚀 **[Acesse a aplicação online](https://debugcafe-ia.vercel.app/)**
+
+🚀 **[Acesse a aplicação online](https://debugcafe-ia.vercel.app/)**
 
 ## Funcionalidades Implementadas
 

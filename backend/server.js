@@ -58,8 +58,13 @@ app.get("/", (req, res) => {
 app.use("/api", chatRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    logger.info(`Servidor rodando na porta ${PORT}`);
-});
 
-module.exports = { app, logger };
+// Para desenvolvimento local
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        logger.info(`Servidor rodando na porta ${PORT}`);
+    });
+}
+
+// Export para Vercel
+module.exports = app;
