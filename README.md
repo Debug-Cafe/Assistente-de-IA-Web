@@ -131,7 +131,13 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    npm install
    ```
 
-2. **Configurar variáveis de ambiente**  
+2. **Obter chave da API Gemini**  
+   - Acesse https://aistudio.google.com/
+   - Faça login com sua conta Google
+   - Clique em "Get API Key" ou "Criar chave de API"
+   - Copie a chave gerada
+
+3. **Configurar variáveis de ambiente**  
    Criar um arquivo `.env` na raiz com:
    ```ini
    PORT= a que você quiser
@@ -139,13 +145,13 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
    ```
 
-3. **Rodar o servidor**  
+4. **Rodar o servidor**  
    ```bash
    npm start
    ```
    O servidor estará disponível em `http://localhost:a que voce quiser`.
 
-4. **Testar o endpoint `/ask` via terminal**  
+5. **Testar o endpoint `/ask` via terminal**  
 
 
    **No Windows PowerShell:**
@@ -160,6 +166,6 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    curl -X POST http://localhost:a que voce quiser/ask      -H "Content-Type: application/json"      -d '{"question": "Qual é a capital do Brasil?"}'
    ```
 
-5. **Testar pelo navegador**  
+6. **Testar pelo navegador**  
    - Acesse `http://localhost:a que voce quiser` para abrir a interface web.
    - Faça uma pergunta e verifique a resposta retornada pela IA.
