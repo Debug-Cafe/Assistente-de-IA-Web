@@ -145,7 +145,7 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    ```
    O servidor estará disponível em `http://localhost:a que voce quiser`.
 
-4. 
+4. **Testar o endpoint `/ask` via terminal**  
 
 
    **No Windows PowerShell:**
