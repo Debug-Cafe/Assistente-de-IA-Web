@@ -163,7 +163,7 @@ Esta seção documenta as contribuições e implementações realizadas durante 
 
    **No Linux/Mac (bash/zsh):**
    ```bash
-   curl -X POST http://localhost:a que voce quiser/ask      -H "Content-Type: application/json"      -d '{"question": "Qual é a capital do Brasil?"}'
+   curl -X POST http://localhost:a que voce quiser/api/ask      -H "Content-Type: application/json"      -d '{"question": "Qual é a capital do Brasil?"}'
    ```
 
 6. **Testar pelo navegador**  
