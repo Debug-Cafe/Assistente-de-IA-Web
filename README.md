@@ -136,7 +136,7 @@ Esta seção documenta as contribuições e implementações realizadas durante 
    ```ini
    PORT= a que você quiser
    GEMINI_API_KEY=sua_chave_aqui
-   GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+   GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
    ```
 
 3. **Rodar o servidor**  
